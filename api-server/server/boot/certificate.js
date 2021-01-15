@@ -34,7 +34,7 @@ import { getChallenges } from '../utils/get-curriculum';
 
 const log = debug('fcc:certification');
 
-export default function bootCertificate(app, done) {
+export default function bootCertificate(app) {
   const api = app.loopback.Router();
   // TODO: rather than getting all the challenges, then grabbing the certs,
   // consider just getting the certs.
@@ -47,7 +47,6 @@ export default function bootCertificate(app, done) {
   api.get('/certificate/showCert/:username/:cert', showCert);
 
   app.use(api);
-  done();
 }
 
 export function getFallbackFrontEndDate(completedChallenges, completedDate) {
