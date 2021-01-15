@@ -26,7 +26,7 @@ export default async function bootChallenge(app, done) {
   const api = app.loopback.Router();
   const router = app.loopback.Router();
   const challengeUrlResolver = await createChallengeUrlResolver(
-    await getChallenges()
+    getChallenges()
   );
   const redirectToCurrentChallenge = createRedirectToCurrentChallenge(
     challengeUrlResolver

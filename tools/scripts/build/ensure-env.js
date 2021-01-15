@@ -3,6 +3,7 @@ const path = require('path');
 const debug = require('debug');
 
 const env = require('../../../config/env');
+const { getChallengesForLang } = require('../../../curriculum/getChallenges');
 
 const log = debug('fcc:ensure-env');
 
@@ -57,6 +58,10 @@ if (FREECODECAMP_NODE_ENV !== 'development') {
 } else {
   log('Skipping environment variable checks in development');
 }
+
+getChallengesForLang('english')
+  .then(JSON.stringify)
+  .then(x => fs.writeFileSync(`${globalConfigPath}/curriculum.json`, x));
 
 fs.writeFileSync(`${clientPath}/config/env.json`, JSON.stringify(env));
 fs.writeFileSync(`${globalConfigPath}/env.json`, JSON.stringify(env));

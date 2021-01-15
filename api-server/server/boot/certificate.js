@@ -38,17 +38,16 @@ export default function bootCertificate(app, done) {
   const api = app.loopback.Router();
   // TODO: rather than getting all the challenges, then grabbing the certs,
   // consider just getting the certs.
-  getChallenges().then(allChallenges => {
-    const certTypeIds = createCertTypeIds(allChallenges);
-    const showCert = createShowCert(app);
-    const verifyCert = createVerifyCert(certTypeIds, app);
+  const allChallenges = getChallenges();
+  const certTypeIds = createCertTypeIds(allChallenges);
+  const showCert = createShowCert(app);
+  const verifyCert = createVerifyCert(certTypeIds, app);
 
-    api.put('/certificate/verify', ifNoUser401, ifNoSuperBlock404, verifyCert);
-    api.get('/certificate/showCert/:username/:cert', showCert);
+  api.put('/certificate/verify', ifNoUser401, ifNoSuperBlock404, verifyCert);
+  api.get('/certificate/showCert/:username/:cert', showCert);
 
-    app.use(api);
-    done();
-  });
+  app.use(api);
+  done();
 }
 
 export function getFallbackFrontEndDate(completedChallenges, completedDate) {
