@@ -38,8 +38,7 @@ export default function bootCertificate(app) {
   const api = app.loopback.Router();
   // TODO: rather than getting all the challenges, then grabbing the certs,
   // consider just getting the certs.
-  const allChallenges = getChallenges();
-  const certTypeIds = createCertTypeIds(allChallenges);
+  const certTypeIds = createCertTypeIds(getChallenges());
   const showCert = createShowCert(app);
   const verifyCert = createVerifyCert(certTypeIds, app);
 
