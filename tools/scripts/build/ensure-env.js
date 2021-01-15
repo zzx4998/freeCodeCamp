@@ -59,6 +59,7 @@ if (FREECODECAMP_NODE_ENV !== 'development') {
   log('Skipping environment variable checks in development');
 }
 
+// We are defaulting to English because the ids for the challenges are same accross all languages.
 getChallengesForLang('english')
   .then(JSON.stringify)
   .then(x => fs.writeFileSync(`${globalConfigPath}/curriculum.json`, x));
