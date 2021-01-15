@@ -7,7 +7,7 @@ import { flatten } from 'lodash';
 // collected.
 
 // if this fails, chances are ensure-env has not been run
-import curriculum from '../../../config/curriculum.json';
+import curriculum from '../../../../config/curriculum.json';
 
 export function getChallenges() {
   return Object.keys(curriculum)
