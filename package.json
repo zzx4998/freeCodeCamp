@@ -16,6 +16,7 @@
     "clean:packages": "lerna clean -y",
     "clean:server": "shx rm -rf ./api-server/lib",
     "clean:client": "cd ./client && npm run clean",
+    "clean:curriculum": "shx rm ./config/curriculum.json",
     "clean:gatsby-site": "npm run clean:client",
     "precypress": "node ./cypress-install.js",
     "cypress": "cypress",
